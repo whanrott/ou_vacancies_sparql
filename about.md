@@ -2,3 +2,5 @@
 
 These are my early attempts to use SPARQL
 
+The SPARQL endpoint is at this URL
+https://data.ox.ac.uk/sparql/
