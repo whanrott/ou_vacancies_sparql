@@ -1,0 +1,18 @@
+SELECT ?vacancy ?label ?minsalary ?grade WHERE {
+     ?vacancy a vacancy:Vacancy ;
+     vacancy:salary/gr:hasMinCurrencyValue ?minsalary ;
+     vacancy:salary/adhoc:salaryGrade ?grade ;
+     vacancy:applicationOpeningDate ?opening ;
+     vacancy:applicationClosingDate ?closing ;
+     rdfs:label ?label
+FILTER (
+	?opening < now() && 
+	now() < ?closing && 
+	24000 < ?minsalary
+	&&
+		(contains( lcase(?comment), 'part-time')
+		||
+		contains( lcase(?label), 'data')
+		)
+	)
+}
